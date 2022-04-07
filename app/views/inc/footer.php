@@ -9,6 +9,7 @@
                         </div>
                         <p>The customer is at the heart of our unique business model, which includes design.</p>
                         <a href="#"><img src="img/payment.png" alt=""></a>
+                        
                     </div>
                 </div>
                 <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
@@ -50,13 +51,7 @@
                 <div class="col-lg-12 text-center">
                     <div class="footer__copyright__text">
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        <p>Copyright ©
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script>2020
-                            All rights reserved | This template is made with <i class="fa fa-heart-o"
-                            aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                        </p>
+                        
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </div>
                 </div>
@@ -87,3 +82,5 @@
     <script src="<?php echo URLROOT ?>/public/js/mixitup.min.js"></script>
     <script src="<?php echo URLROOT ?>/public/js/owl.carousel.min.js"></script>
     <script src="<?php echo URLROOT ?>/public/js/main.js"></script>
+
+   

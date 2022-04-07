@@ -5,7 +5,7 @@
 <body>
     <?php require("inc/header.php") ?>
     <?php require("inc/nav.php") ?>
-
+  
     <!-- Hero Section Begin -->
     <section class="hero">
         <div class="hero__slider owl-carousel">
@@ -18,7 +18,7 @@
                                 <h2>Fall - Winter Collections 2030</h2>
                                 <p>A specialist label creating luxury essentials. Ethically crafted with an unwavering
                                     commitment to exceptional quality.</p>
-                                <a href="#" class="primary-btn">Shop now <span class="arrow_right"></span></a>
+                                <a href="<?php echo (URLROOT)?>pages/shop" class="primary-btn">Shop now <span class="arrow_right"></span></a>
                                 <div class="hero__social">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
                                     <a href="#"><i class="fa fa-twitter"></i></a>
@@ -39,7 +39,7 @@
                                 <h2>Fall - Winter Collections 2030</h2>
                                 <p>A specialist label creating luxury essentials. Ethically crafted with an unwavering
                                     commitment to exceptional quality.</p>
-                                <a href="#" class="primary-btn">Shop now <span class="arrow_right"></span></a>
+                                    <a href="<?php echo (URLROOT)?>pages/shop" class="primary-btn">Shop now <span class="arrow_right"></span></a>
                                 <div class="hero__social">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
                                     <a href="#"><i class="fa fa-twitter"></i></a>
@@ -109,11 +109,13 @@
                     </ul>
                 </div>
             </div>
+            
             <div class="row product__filter">
                 <?php foreach ($data["products"] as $p) { ?>
+                    
                     <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="<?php echo($p->img); ?>">
+                            <div class="product__item__pic set-bg" data-setbg="<?php echo URLROOT.($p->img); ?>">
                                 <span class="label">New</span>
                                 <ul class="product__hover">
                                     <li><a href="#"><img src="<?php echo URLROOT ?>/public/img/icon/heart.png" alt=""></a></li>
@@ -124,7 +126,7 @@
                             </div>
                             <div class="product__item__text">
                                 <h6><?php echo $p->name ?></h6>
-                                <a href="#" class="add-cart">+ Add To Cart</a>
+                                <a href="<?php echo URLROOT ?>/cart/addCart" class="add-cart">+ Add To Cart</a>
                                 <div class="rating">
                                     <i class="fa fa-star-o"></i>
                                     <i class="fa fa-star-o"></i>
@@ -147,60 +149,14 @@
                             </div>
                         </div>
                     </div>
-
+                    
                 <?php } ?>
             </div>
         </div>
     </section>
     <!-- Product Section End -->
 
-    <!-- Categories Section Begin -->
-    <section class="categories spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="categories__text">
-                        <h2>Clothings Hot <br /> <span>Shoe Collection</span> <br /> Accessories</h2>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="categories__hot__deal">
-                        <img src="<?php echo URLROOT ?>/public/img/product-sale.png" alt="">
-                        <div class="hot__deal__sticker">
-                            <span>Sale Of</span>
-                            <h5>$29.99</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 offset-lg-1">
-                    <div class="categories__deal__countdown">
-                        <span>Deal Of The Week</span>
-                        <h2>Multi-pocket Chest Bag Black</h2>
-                        <div class="categories__deal__countdown__timer" id="countdown">
-                            <div class="cd-item">
-                                <span>3</span>
-                                <p>Days</p>
-                            </div>
-                            <div class="cd-item">
-                                <span>1</span>
-                                <p>Hours</p>
-                            </div>
-                            <div class="cd-item">
-                                <span>50</span>
-                                <p>Minutes</p>
-                            </div>
-                            <div class="cd-item">
-                                <span>18</span>
-                                <p>Seconds</p>
-                            </div>
-                        </div>
-                        <a href="#" class="primary-btn">Shop now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Categories Section End -->
+   
 
 
     <?php require("inc/footer.php") ?>

@@ -10,7 +10,7 @@
 <body>
     <?php require("inc/header.php") ?>
     <?php require("inc/nav.php") ?>
-  
+    <?php var_dump($_SESSION); ?>
 
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-option">
@@ -63,15 +63,20 @@
                                         <div class="card-body">
                                             <div class="shop__sidebar__categories">
                                                 <ul class="nice-scroll">
-                                                    <?php foreach ($data["categorie"] as $c) {
-                                                    ?>
-                                                        <div class="list-group-item checkbox">
-                                                            <label><input type="checkbox" class="common_selector brand" value="<?php echo $c->id ?>"> <?php echo $c->name ?></label>
-                                                        </div>
-                                                    <?php
-                                                    }
 
-                                                    ?>
+                                                    <form method="GET">
+                                                        <select name="categorie" onChange="searchPropositions(this.value)">
+                                                            <option value="d">Choisir categorie</option>
+                                                            <?php foreach ($data["categorie"] as $c) { ?>
+                                                                <option value="<?php echo $c->id ?>"><?php echo $c->name ?></option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </form>
+
+                                                    <?php foreach ($data["categorie"] as $c) { ?>
+                                                        <li><input  type="checkbox" id="cat" class="filtre" value="<?php echo ($c->id) ?>">
+                                                            <?php echo ($c->name) ?></li>
+                                                    <?php } ?>
 
 
                                                 </ul>
@@ -137,51 +142,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                       
+                    <div class="row" id="reslt">
 
-                            <?php foreach ($data["products"] as $p) { ?>
+               			 <!--products-->
 
-                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="product__item">
-                                        <div class="product__item__pic set-bg" data-setbg="<?php echo URLROOT . ($p->img); ?>">
-
-                                            <ul class="product__hover">
-                                                <li><a href="#"><img src="<?php echo URLROOT ?>/public/img/icon/heart.png" alt=""></a></li>
-                                                <li><a href="#"><img src="<?php echo URLROOT ?>/public/img/icon/compare.png" alt=""> <span>Compare</span></a>
-                                                </li>
-                                                <li><a href="<?php echo URLROOT ?>products/details?id=<?php echo ($p->id) ?>"><img src="<?php echo URLROOT ?>/public/img/icon/search.png" alt=""></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__item__text">
-                                            <h6><?php echo $p->name ?></h6>
-                                            <a href="<?php echo (URLROOT) ?>orders/addOrder?id=<?php echo ($p->id); ?>&price=<?php echo ($p->price); ?>&name=<?php echo ($p->name); ?>&img=<?php echo ($p->img); ?>" class="add-cart">+ Add To Cart</a>
-                                            <div class="rating">
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </div>
-                                            <h5><?php echo $p->price ?></h5>
-                                            <div class="product__color__select">
-                                                <label for="pc-4">
-                                                    <input type="radio" id="pc-4">
-                                                </label>
-                                                <label class="active black" for="pc-5">
-                                                    <input type="radio" id="pc-5">
-                                                </label>
-                                                <label class="grey" for="pc-6">
-                                                    <input type="radio" id="pc-6">
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php } ?>
-
-
-                        
                     </div>
                     <div class="row">
                         <div class="col-lg-12">

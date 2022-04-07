@@ -11,11 +11,7 @@ class Pages extends Controller
         $products = $this->productsModel->getProducts();
         $data = ['products' => $products];
         $this->view('index', $data);
-    }
-
-    public function shopCart()
-    {
-        $this->view('shopCart');
+        
     }
 
     public function shop()
@@ -25,23 +21,15 @@ class Pages extends Controller
         $brands = $this->productsModel->getBrands();
         $data = ['products' => $products, 'categorie' => $categorie, 'brands' => $brands];
         $this->view('shop', $data);
+        
+       
     }
     public function about()
     {
         $this->view('about');
     }
-    public function blogDetails()
-    {
-        $this->view('blogDetails');
-    }
-    public function blog()
-    {
-        $this->view('blog');
-    }
-    public function checkout()
-    {
-        $this->view('checkout');
-    }
+   
+   
     public function contact()
     {
         $this->view('contact');
@@ -54,4 +42,13 @@ class Pages extends Controller
     {
         $this->view('shopDetails');
     }
+    public function shopCart()
+    {
+        $this->view('shopCart');
+    }
+    
+    
+    
+
+  
 }

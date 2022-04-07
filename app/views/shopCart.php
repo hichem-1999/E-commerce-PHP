@@ -2,12 +2,9 @@
 <html lang="zxx">
 <?php require("inc/head.php") ?>
 
-
-
 <body>
     <?php require("inc/header.php") ?>
     <?php require("inc/nav.php") ?>
-
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-option">
         <div class="container">
@@ -32,111 +29,88 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    <div class="shopping__cart__table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Product</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="product__cart__item">
-                                        <div class="product__cart__item__pic">
-                                            <img src="<?php echo URLROOT ?>/public/img/shopping-cart/cart-1.jpg" alt="">
-                                        </div>
+                    <?php if (isset($_SESSION['cart'])) { ?>
+                        <div class="shopping__cart__table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
 
-                                        <div class="product__cart__item__text">
-                                            <h6>T-shirt Contrast Pocket</h6>
-                                            <h5>$98.49</h5>
-                                        </div>
-                                    </td>
-                                    <td class="quantity__item">
-                                        <div class="quantity">
-                                            <div class="pro-qty-2">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 30.00</td>
-                                    <td class="cart__close"><i class="fa fa-close"></i></td>
-                                </tr>
-                                <tr>
-                                    <td class="product__cart__item">
-                                        <div class="product__cart__item__pic">
-                                            <img src="<?php echo URLROOT ?>/public/img/shopping-cart/cart-2.jpg" alt="">
-                                        </div>
-                                        <div class="product__cart__item__text">
-                                            <h6>Diagonal Textured Cap</h6>
-                                            <h5>$98.49</h5>
-                                        </div>
-                                    </td>
-                                    <td class="quantity__item">
-                                        <div class="quantity">
-                                            <div class="pro-qty-2">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 32.50</td>
-                                    <td class="cart__close"><i class="fa fa-close"></i></td>
-                                </tr>
-                                <tr>
-                                    <td class="product__cart__item">
-                                        <div class="product__cart__item__pic">
-                                            <img src="<?php echo URLROOT ?>/public/img/shopping-cart/cart-3.jpg" alt="">
-                                        </div>
-                                        <div class="product__cart__item__text">
-                                            <h6>Basic Flowing Scarf</h6>
-                                            <h5>$98.49</h5>
-                                        </div>
-                                    </td>
-                                    <td class="quantity__item">
-                                        <div class="quantity">
-                                            <div class="pro-qty-2">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 47.00</td>
-                                    <td class="cart__close"><i class="fa fa-close"></i></td>
-                                </tr>
-                                <tr>
-                                    <td class="product__cart__item">
-                                        <div class="product__cart__item__pic">
-                                            <img src="<?php echo URLROOT ?>/public/img/shopping-cart/cart-4.jpg" alt="">
-                                        </div>
-                                        <div class="product__cart__item__text">
-                                            <h6>Basic Flowing Scarf</h6>
-                                            <h5>$98.49</h5>
-                                        </div>
-                                    </td>
-                                    <td class="quantity__item">
-                                        <div class="quantisty">
-                                            <div class="pro-qty-2">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 30.00</td>
-                                    <td class="cart__close"><i class="fa fa-close"></i></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                                <tbody>
+
+
+                                <?php foreach ($_SESSION['cart'] as $key => $value) { ?>
+                                        <tr>
+                                            <td class="product__cart__item">
+                                                <div class="product__cart__item__pic">
+                                                    <img width="150" height="150" src="<?php echo URLROOT . $value['img'] ?>" alt="">
+
+                                                </div>
+
+                                                <div class="product__cart__item__text">
+                                                    <h6><?php echo $value['name'] ?></h6>
+                                                    <h5><?php echo  "$ " . $value['price']?></h5>
+                                                </div>
+                                            </td>
+                                            <form method="Get" action="<?php echo URLROOT; ?>/Carts/setQte">
+                                                <td class="quantity__item">
+                                                    <div class="quantity">
+
+
+
+                                                       
+                                                            <input type='submit' name=<?php echo $key . "2" ?> value='-'>
+                                                            <?php echo $value['qte'] ?>
+                                                            <input type='submit' name=<?php echo $key . "1" ?> value='+'>
+                                                    </div>
+                                                </td>
+                                                <td class="cart__price">
+                                                    <?php echo $value['total'] ?>
+                                                </td>
+                                          
+                                            </form>
+
+
+
+
+                                            <td class="cart__close"><a href="<?php echo (URLROOT) ?>Carts/deleteOrder?id=<?php echo  $value['product_id'] ?>" class="add-cart"><i class="fa fa-close"></i></td>
+
+
+
+                                        </tr>
+
+                                    <?php } ?>
+
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    <?php } else { ?>
+                        <div class="breadcrumb__text">
+                            <h4>the cart is empty</h4>
+
+                        </div>
+                    <?php } ?>
+
+
+
+
+
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="continue__btn">
-                                <a href="#">Continue Shopping</a>
+
+                                <a href="<?php echo URLROOT ?>/Pages/shop">Continue Shopping</a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="continue__btn update__btn">
-                                <a href="#"><i class="fa fa-spinner"></i> Update cart</a>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -151,10 +125,14 @@
                     <div class="cart__total">
                         <h6>Cart total</h6>
                         <ul>
-                            <li>Subtotal <span>$ 169.50</span></li>
-                            <li>Total <span>$ 169.50</span></li>
+                            <?php if (isset($_SESSION['cart'])) { ?>
+                                <li>Total <span>$ <?php echo $data['total'] ?></span></li>
+                            <?php } else { ?>
+                                <li>Total <span>$ 0</span></li>
+                            <?php } ?>
                         </ul>
-                        <a href="#" class="primary-btn">Proceed to checkout</a>
+
+                        <a class="primary-btn" href="<?php echo URLROOT ?>/Checkout/getOrders">Proceed to checkout</a>
                     </div>
                 </div>
             </div>

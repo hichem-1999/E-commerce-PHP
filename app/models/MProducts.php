@@ -37,11 +37,11 @@ class MProducts
 
     public function getByCategorie ($id){
 		
-		$this->db->query("SELECT products.id, products.name, products.name,products.name,products.price,products.size,products.color,products.products.id_cat, categorie.id,categorie.name as categorie
-				FROM produit
-				LEFT JOIN categorie
-				ON products.products.id_cat = categorie.id
-				WHERE products.products.id_cat=:id");
+		$this->db->query("SELECT products.id, products.name, products.price, products.size,products.color, products.id_cat, products.img,  products.id_brand,products.product_status, products.qte,categorie.name as categorie
+        FROM products
+        LEFT JOIN categorie
+        ON products.id_cat = categorie.id
+		WHERE products.id_cat=:id");
 		//$sql = "SELECT * FROM produit WHERE code_categorie=?";
 
         $this->db->bind(':id', $id);
@@ -61,5 +61,57 @@ class MProducts
         return($row);    
 
     }
+    public function getProductsByPrice(){
+        $this->db->query('SELECT * FROM products ORDER BY price ASC');
+        $result = $this->db->resultSet();
+        return $result;
+
+    }
+
+    public function getprod($action,$brand,$cat,$min,$max,$recherche){
+            
+            
+        if(!empty($action)){
+
+            $sql='SELECT * FROM products where state = 0 and price between '.$min.' AND '.$max.' ';
+            if(!empty($brand)){
+                $brands = implode("','", $brand);
+          
+            
+                
+            
+                $sql.="and id_brand in('".$brands."')";
+                
+                
+            }
+            if(!empty($cat)){
+                $cats = implode("','", $cat);
+          
+                
+            
+                $sql.="and id_cat in('".$cats."')";
+                
+                
+            }
+            if(!empty($recherche)){
+
+                $sql.="and name like '%".$recherche."%'";
+                
+
+            }
+           
+        }
+       
+        $this->db->query($sql);
+    
+       
+
+         
+        return ($this->db->resultSet());
+        
+      
+       
+    }
+
 }
 

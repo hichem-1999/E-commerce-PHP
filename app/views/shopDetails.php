@@ -4,49 +4,41 @@
 <?php require("inc/head.php") ?>
 
 <body>
-    <?php var_dump($data) ;?>
-<br>
-    <?php var_dump($data2) ;?>
+   
+
     <?php require("inc/header.php") ?>
     <?php require("inc/nav.php") ?>
-
-    <!-- Shop Details Section Begin -->
-    <section class="shop-details">
-    <div class="product__details__pic">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="product__details__breadcrumb">
+    <section class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <h4>Product Details</h4>
+                        <div class="breadcrumb__links">
                             <a href="./index.html">Home</a>
                             <a href="./shop.html">Shop</a>
                             <span>Product Details</span>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+    <!-- Shop Details Section Begin -->
+    <section class="shop-details">
+    <div class="product__details__pic">
+            <div class="container">
+                
                 <div class="row">
                     
-                    <div class="d-flex justify-content-between">
+                    <div class="col">
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <div class="product__details__pic__item">
-                                    <img src="<?php echo($data["image"]); ?>" alt="">
-                                    
-                                    
-
+                                    <img width="400" height="400" src="<?php echo URLROOT.($data["image"]); ?>" alt="">
                                 </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="product__details__content">
-            <div class="container">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="product__details__text">
-                            <h4><?php echo($data["name"]); ?></h4>
+                                <div class="product__details__text">
+                                <h4><?php echo($data["name"]); ?></h4>
                             <div class="rating">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -59,25 +51,31 @@
                             <p><?php echo($data["name"]); ?> with quilted lining and an adjustable hood. Featuring long sleeves with adjustable
                                 cuff tabs, adjustable asymmetric hem with elastic side tabs and a front zip fastening
                                 with placket.</p>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="product__details__text">
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
                             <div class="product__details__option">
                                 <div class="product__details__option__size">
                                     <span>Size:</span>
-                                    <label for="xxl"><?php echo($data["size"]); ?>
+                                    <label  class="active"  for="xxl"><?php echo($data["size"]); ?>
                                         <input type="radio" id="xxl">
                                     </label>
-                                    <label class="active" for="xl">xl
-                                        <input type="radio" id="xl">
-                                    </label>
-                                    <label for="l">l
-                                        <input type="radio" id="l">
-                                    </label>
-                                    <label for="sm">s
-                                        <input type="radio" id="sm">
-                                    </label>
+                                    
                                 </div>
                                 <div class="product__details__option__color">
-                                    <span>Color:</span>
-                                    <label class="c-1" for="sp-1">
+                                    <span>Color:</span> 
+                                    <label class="c-1" for="sp-1"><?php echo($data["color"]); ?>
                                         <input type="radio" id="sp-1">
                                     </label>
                                     <label class="c-2" for="sp-2">
@@ -95,32 +93,32 @@
                                 </div>
                             </div>
                             <div class="product__details__cart__option">
-                                <div class="quantity">
-                                    <div class="pro-qty">
-                                        <input type="text" value="1">
-                                    </div>
-                                </div>
+                              
                                 <a href="#" class="primary-btn">add to cart</a>
                             </div>
-                            <div class="product__details__btns__option">
-                                <a href="#"><i class="fa fa-heart"></i> add to wishlist</a>
-                                <a href="#"><i class="fa fa-exchange"></i> Add To Compare</a>
-                            </div>
+                           
                             <div class="product__details__last__option">
                                 <h5><span>Guaranteed Safe Checkout</span></h5>
-                                <img src="img/shop-details/details-payment.png" alt="">
+                                <img src="<?php echo (URLROOT); ?>public/img/shop-details/details-payment.png" alt="">
                                 <ul>
-                                    <li><span>SKU:</span> 3812912</li>
-                                    <li><span>Categories:</span> <?php echo $data2->id;
-
+                                <li><span>brand:</span><?php foreach ($data1 as $d)
+                                
+                                    if ($d->id == ($data["brand"]))
+                                    echo $d->name ;
                                     ?></li>
-                                    <li><span>Tag:</span> Clothes, Skin, Body</li>
+                                    <li><span>Categories:</span><?php foreach ($data2 as $d)
+                                    if ($d->id == ($data["categorie"]))
+                                    echo $d->name ;
+                                    ?></li>
+                                    
                                 </ul>
                             </div>
                         </div>
                     </div>
-                </div>
+
                 
+        
+        
             </div>
         </div>
     </section>

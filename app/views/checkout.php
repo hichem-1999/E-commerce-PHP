@@ -28,128 +28,95 @@
     <!-- Checkout Section Begin -->
     <section class="checkout spad">
         <div class="container">
+
             <div class="checkout__form">
-                <form action="#">
+                <form id="checkout-form" method="POST" action="<?php echo URLROOT; ?>/Checkout/addToFireBase">
                     <div class="row">
-                        <div class="col-lg-8 col-md-6">
-                            <h6 class="coupon__code"><span class="icon_tag_alt"></span> Have a coupon? <a href="#">Click
-                                    here</a> to enter your code</h6>
-                            <h6 class="checkout__title">Billing Details</h6>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Fist Name<span>*</span></p>
-                                        <input type="text">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Last Name<span>*</span></p>
-                                        <input type="text">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="checkout__input">
-                                <p>Country<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Address<span>*</span></p>
-                                <input type="text" placeholder="Street Address" class="checkout__input__add">
-                                <input type="text" placeholder="Apartment, suite, unite ect (optinal)">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Town/City<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Country/State<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Postcode / ZIP<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Phone<span>*</span></p>
-                                        <input type="text">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Email<span>*</span></p>
-                                        <input type="text">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="checkout__input__checkbox">
-                                <label for="acc">
-                                    Create an account?
-                                    <input type="checkbox" id="acc">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <p>Create an account by entering the information below. If you are a returning customer
-                                    please login at the top of the page</p>
-                            </div>
-                            <div class="checkout__input">
-                                <p>Account Password<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input__checkbox">
-                                <label for="diff-acc">
-                                    Note about your order, e.g, special noe for delivery
-                                    <input type="checkbox" id="diff-acc">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="checkout__input">
-                                <p>Order notes<span>*</span></p>
-                                <input type="text" placeholder="Notes about your order, e.g. special notes for delivery.">
-                            </div>
+                        <div class="col-2">
+                            <?php if (isset($_SESSION['cart'])) { ?>
                         </div>
-                        <div class="col-lg-4 col-md-6">
+                        <div class="col-8">
                             <div class="checkout__order">
                                 <h4 class="order__title">Your order</h4>
-                                <div class="checkout__order__products">Product <span>Total</span></div>
+                                <div class="checkout__order__products">Product * QTE <span>Total</span><span>Total</span>
+                            </div>
                                 <ul class="checkout__total__products">
-                                    <li>01. Vanilla salted caramel <span>$ 300.0</span></li>
-                                    <li>02. German chocolate <span>$ 170.0</span></li>
-                                    <li>03. Sweet autumn <span>$ 170.0</span></li>
-                                    <li>04. Cluten free mini dozen <span>$ 110.0</span></li>
+                                    <?php foreach ($_SESSION['cart'] as $key => $value) { ?>
+                                        <li> <?php echo $value['name'] . " *" ?><?php echo $value['qte'] ?> <span>$ <?php echo $value['total']; ?></span></li>
+                                        <input type="hidden" name="product_id" value="<?php echo $value['product_id']; ?>">
+                                        <input type="hidden" name="qte" value="<?php echo $value['qte']; ?>">
+                                    <?php } ?>
                                 </ul>
                                 <ul class="checkout__total__all">
-                                    <li>Subtotal <span>$750.99</span></li>
-                                    <li>Total <span>$750.99</span></li>
+                                    <?php if (isset($_SESSION['cart'])) { ?>
+                                        <li>Total <span>$ <?php echo $data['total'] ?></span></li>
+                                        <input type="hidden" name="total" value="<?php echo $data['total']; ?>">
+                                        <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
+                                    <?php } else { ?>
+                                        <li>Total <span>$ 0</span></li>
+                                    <?php } ?>
+
                                 </ul>
-                                <div class="checkout__input__checkbox">
-                                    <label for="acc-or">
-                                        Create an account?
-                                        <input type="checkbox" id="acc-or">
-                                        <span class="checkmark"></span>
-                                    </label>
+
+                                <p> Please, Chose your payment methode.</p>
+                                <div>
+                                    <div class=" form-check">
+                                        <div class="row">
+                                            <div class="col">
+                                                
+                                                <label for="paypal">
+                                                    MasterCard
+                                                    <input type="checkbox" id="Bitcoin" name="payment_mode" value=" MasterCard">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div class="col">
+                                            <label for="payment">
+                                                    Check Payment
+                                                    <input  type="checkbox" id="payment" name="payment_mode" value="Check Payment">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" form-check">
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="paypal">
+                                                    Bitcoin
+                                                    <input  type="checkbox" id="Bitcoin" name="payment_mode" value=" Bitcoin">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div class="col">
+                                            <label for="paypal">
+                                                    Paypal
+                                                    <input type="checkbox" id="paypal" name="payment_mode" value=" Paypal">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                    <img src="<?php echo URLROOT ?>/public/img/payment.png" alt="">
+                                    </div>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
-                                    ut labore et dolore magna aliqua.</p>
-                                <div class="checkout__input__checkbox">
-                                    <label for="payment">
-                                        Check Payment
-                                        <input type="checkbox" id="payment">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                                <div class="checkout__input__checkbox">
-                                    <label for="paypal">
-                                        Paypal
-                                        <input type="checkbox" id="paypal">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
+
                                 <button type="submit" class="site-btn">PLACE ORDER</button>
+                            <?php } else { ?>
+                                <div class="breadcrumb__text">
+                                    <h4>the cart is empty</h4>
+
+                                </div>
+                            <?php } ?>
                             </div>
+
+
                         </div>
+
                     </div>
+
                 </form>
             </div>
         </div>

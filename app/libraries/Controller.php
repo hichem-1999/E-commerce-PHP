@@ -11,7 +11,7 @@ class Controller
     }
 
     //Load the view (checks for the file)
-    public function view($view, $data = [], $data1 = [], $data2 = [])
+    public function view($view, $data = [], $data1 = [], $data2 = [],$id1=1,$id2=2)
     {
         if (file_exists('../app/views/' . $view . '.php')) {
             require_once '../app/views/' . $view . '.php';

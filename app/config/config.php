@@ -12,7 +12,7 @@ define('DB_NAME', 'phpproject'); //Add your DB Name
 define('APPROOT', dirname(dirname(__FILE__)));
 
 //URLROOT (Dynamic links)
-define('URLROOT', 'http://localhost/MVCFramework-master/');
+define('URLROOT', 'http://344a-165-50-80-88.ngrok.io/MVCFramework-master/');
 
 //Sitename
 define('SITENAME', 'MVC Framework');

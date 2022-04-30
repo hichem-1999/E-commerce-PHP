@@ -1,11 +1,14 @@
 # E-commerce-PHP
-{Site E-Commerce}
+Site E-Commerce
 Development of online clothes store with authentication and authorisation functionalities.  
+Technology: PHP, GIT, phpMyAdmin, HTML, CSS.
 # HOME PAGE 
 ![image](https://user-images.githubusercontent.com/79280888/166090844-a85f4f4d-ab8b-4f3e-9cb6-39ce53618f5c.png)
 ![image](https://user-images.githubusercontent.com/79280888/166090853-a95890c7-2dd6-4299-9c82-d2bd46fd48e4.png)
 
 # I have to login first to continue shopping 
+![image](https://user-images.githubusercontent.com/79280888/166090953-08ea619f-a8af-4236-9337-183f221466fc.png)
+
 # register page 
 ![image](https://user-images.githubusercontent.com/79280888/166090698-02472628-5732-472f-895e-da4e04e2edae.png)
 # sign in page 
@@ -15,6 +18,7 @@ Development of online clothes store with authentication and authorisation functi
 ![image](https://user-images.githubusercontent.com/79280888/166090762-c4104269-7c7a-4db6-a124-6c717761345d.png)
 ![image](https://user-images.githubusercontent.com/79280888/166090768-2d250591-da89-4ed9-8a7d-692a4b8b3b24.png)
 # if the cart is empty
+![image](https://user-images.githubusercontent.com/79280888/166090967-ac785d07-527b-4746-a7a1-17fcbc99b010.png)
 
 # product details 
 ![image](https://user-images.githubusercontent.com/79280888/166090793-b077f298-36c1-4e1a-b787-f5e984550542.png)
